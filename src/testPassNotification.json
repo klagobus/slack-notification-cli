@@ -1,0 +1,21 @@
+{
+    "title": "Ottermated Test Notification",
+    "status": "success",
+    "details": {
+      "repoName": "ottermated",
+      "testSuiteName": "smoke",
+      "triggeredBy": "U03HMRFJA73",
+      "gitBranch": "main",
+      "testingFramework": "cucumber",
+      "buildNumber": "1242",
+      "links": {
+        "build": "https://example.com/view-build",
+        "buildArtifacts": "https://example.com/build-artifacts",
+        "pullRequest": "https://example.com/view-pr",
+        "reportPortal": "https://example.com/report-portal",
+        "htmlReport": "https://example.com/html-report"
+      }
+    }
+   
+  }
+  

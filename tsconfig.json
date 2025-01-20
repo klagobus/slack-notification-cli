@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "types": ["jest"],
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "es2017"
+  },
+  "include": [
+    "src/**/*",
+    "src/notification.json" // Add this line
+  ],
+  "exclude": [
+    "test/**/*"
+  ]
+} 
+
