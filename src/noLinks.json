@@ -1,0 +1,14 @@
+{
+    "title": "Ottermated Test Notification",
+    "status": "unknown",
+    "details": {
+      "repoName": "ottermated",
+      "testSuiteName": "smoke",
+      "triggeredBy": "U03HMRFJA73",
+      "gitBranch": "main",
+      "testingFramework": "cucumber",
+      "buildNumber": "1242"
+    }
+   
+  }
+  

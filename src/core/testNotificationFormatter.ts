@@ -53,6 +53,23 @@ export class TestNotificationFormatter {
     }
   }
 
+  private createActionElements(notification: Notification, linkNames: Record<string, string>): ActionsBlockElement[] {
+    const elements: ActionsBlockElement[] = []
+    const links = notification.details?.links
+
+    if (!links) {
+      return elements // Return empty array if links is not defined
+    }
+
+    for (const [key, label] of Object.entries(linkNames)) {
+      if (links[key]) {
+        elements.push(this.createButtonElement(label, links[key]))
+      }
+    }
+
+    return elements
+  }
+
   public formatNotification(notification: Notification): {attachments: MessageAttachment[]} {
     const attachments: MessageAttachment[] = [
       {
@@ -81,51 +98,28 @@ export class TestNotificationFormatter {
       },
     ]
 
-    const builds = this.createActionBlock(this.createBuildActionElements(notification))
-    if (builds !== null) {
-      attachments[0].blocks.push(builds)
+    const buildLinks = {
+      pullRequest: 'View PR',
+      build: `View Build Number ${notification.details.buildNumber}`,
+      buildArtifacts: 'Build Artifacts',
     }
-    const reports = this.createActionBlock(this.createReportActionElements(notification))
-    if (reports !== null) {
-      attachments[0].blocks.push(reports)
+
+    const reportLinks = {
+      reportPortal: 'Report Portal Launch',
+      htmlReport: 'View HTML Report',
+    }
+
+    const buildElements = this.createActionElements(notification, buildLinks)
+    if (buildElements.length > 0) {
+      attachments[0].blocks.push(this.createActionBlock(buildElements))
+    }
+
+    const reportElements = this.createActionElements(notification, reportLinks)
+    if (reportElements.length > 0) {
+      attachments[0].blocks.push(this.createActionBlock(reportElements))
     }
 
     return {attachments}
-  }
-
-  private createBuildActionElements(notification: Notification): ActionsBlockElement[] {
-    const elements: ActionsBlockElement[] = []
-    const buildNumber = notification.details.buildNumber
-    const pullRequest = notification.details.links.pullRequest
-    const build = notification.details.links.build
-    const buildArtifacts = notification.details.links.buildArtifacts
-
-    if (pullRequest) {
-      elements.push(this.createButtonElement('View PR', pullRequest))
-    }
-    if (build) {
-      elements.push(this.createButtonElement(`View Build Number ${buildNumber} :smiley:`, build))
-    }
-    if (buildArtifacts) {
-      elements.push(this.createButtonElement('Build Artifacts', buildArtifacts))
-    }
-
-    return elements
-  }
-
-  private createReportActionElements(notification: Notification): ActionsBlockElement[] {
-    const elements: ActionsBlockElement[] = []
-    const reportPortal = notification.details.links.reportPortal
-    const htmlReport = notification.details.links.htmlReport
-
-    if (reportPortal) {
-      elements.push(this.createButtonElement('Report Portal Launch', reportPortal))
-    }
-    if (htmlReport) {
-      elements.push(this.createButtonElement('View HTML Report', htmlReport))
-    }
-
-    return elements
   }
 
   private createActionBlock(elements: ActionsBlockElement[]): ActionsBlock {
