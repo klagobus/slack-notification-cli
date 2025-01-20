@@ -15,7 +15,7 @@ export class SlackSender {
 
     await this.client.chat.postMessage({
       channel,
-      text: `*:smiley:${notification.status.toUpperCase()}: ${notification.details.testingFramework} Tests*`,
+      text: `*${notification.status.toUpperCase()}: ${notification.details.testingFramework} Tests*`,
       ...message,
     })
   }

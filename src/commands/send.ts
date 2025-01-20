@@ -19,7 +19,7 @@ export class Send extends Command {
     // Read and parse the JSON file
     const notificationData = fs.readFileSync(config, 'utf-8')
     const notification: Notification = JSON.parse(notificationData)
-    console.log('******', notification)
+
     const sender = new SlackSender(token)
 
     try {
