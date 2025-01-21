@@ -14,7 +14,12 @@ export class TestNotificationFormatter extends NotificationFormatter {
       {
         color: `${this.colorMap[notification.status]}`,
         blocks: [
-          this.createHeaderBlock('Ottermation Notification'),
+          this.createHeaderBlock(
+            `:test_tube: ${
+              notification.details.testingFramework.charAt(0).toUpperCase() +
+              notification.details.testingFramework.slice(1)
+            } Tests :test_tube:`,
+          ),
           this.createSectionBlock({
             fields: [
               {type: 'mrkdwn', text: `*Repo:*\n \`${notification.details.repoName}\``},
