@@ -107,6 +107,12 @@ export class NotificationFormatter {
     return elements
   }
 
+  /**
+   * Creates an action block for Slack messages containing the provided action elements.
+   *
+   * @param elements - An array of ActionsBlockElement objects to be included in the action block.
+   * @returns An ActionsBlock object containing the type and elements if any elements are provided; otherwise, returns undefined.
+   */
   protected createActionBlock(elements: ActionsBlockElement[]): ActionsBlock {
     if (elements.length > 0) {
       return {
