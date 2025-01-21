@@ -31,7 +31,7 @@
     "typescript": "^5.7.3"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "files": [
     "/bin",
@@ -45,7 +45,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "oclif": {
-    "bin": "tests-notify",
+    "bin": "notify",
     "dirname": "tests-notify",
     "commands": "./dist/commands",
     "plugins": [
@@ -66,10 +66,11 @@
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "npm run lint",
     "prepack": "oclif manifest && oclif readme",
-    "cli": "node ./bin/run send --token $SLACK_TOKEN",
+    "dev": "node ./bin/run send",
     "test": "jest",
     "version": "oclif readme && git add README.md",
-    "dev:cli": "npm run build && npm run cli"
+    "dev:cli": "npm run build && npm run dev"
+
   },
   "types": "dist/index.d.ts"
 }
