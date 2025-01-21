@@ -9,67 +9,9 @@ import {
   TextObject,
 } from '@slack/types'
 import {Notification} from '../types/notification'
+import {NotificationFormatter} from './notificationFormater'
 
-export class TestNotificationFormatter {
-  private colorMap = {
-    success: '#36a64f',
-    failure: '#e01e5a',
-    unknown: '#FFFF00',
-    none: '#ffa500',
-  }
-
-  private createHeaderBlock(text: string): HeaderBlock {
-    return {
-      type: 'header',
-      text: {
-        type: 'plain_text',
-        text,
-      },
-    }
-  }
-
-  private createSectionBlock(options: {
-    text?: TextObject
-    fields?: TextObject[]
-    accessory?: SectionBlockAccessory
-  }): SectionBlock {
-    return {
-      type: 'section',
-      text: options.text,
-      fields: options.fields,
-      accessory: options.accessory,
-    }
-  }
-
-  private createButtonElement(text: string, url: string): Button {
-    return {
-      type: 'button',
-      text: {
-        type: 'plain_text',
-        text,
-        emoji: true,
-      },
-      url,
-    }
-  }
-
-  private createActionElements(notification: Notification, linkNames: Record<string, string>): ActionsBlockElement[] {
-    const elements: ActionsBlockElement[] = []
-    const links = notification.details?.links
-
-    if (!links) {
-      return elements // Return empty array if links is not defined
-    }
-
-    for (const [key, label] of Object.entries(linkNames)) {
-      if (links[key]) {
-        elements.push(this.createButtonElement(label, links[key]))
-      }
-    }
-
-    return elements
-  }
-
+export class TestNotificationFormatter extends NotificationFormatter {
   public formatNotification(notification: Notification): {attachments: MessageAttachment[]} {
     const attachments: MessageAttachment[] = [
       {
@@ -98,38 +40,19 @@ export class TestNotificationFormatter {
       },
     ]
 
-    const buildLinks = {
+    const linkButons = {
       pullRequest: 'View PR',
       build: `View Build Number ${notification.details.buildNumber}`,
       buildArtifacts: 'Build Artifacts',
-    }
-
-    const reportLinks = {
       reportPortal: 'Report Portal Launch',
       htmlReport: 'View HTML Report',
     }
 
-    const buildElements = this.createActionElements(notification, buildLinks)
-    if (buildElements.length > 0) {
-      attachments[0].blocks.push(this.createActionBlock(buildElements))
-    }
-
-    const reportElements = this.createActionElements(notification, reportLinks)
-    if (reportElements.length > 0) {
-      attachments[0].blocks.push(this.createActionBlock(reportElements))
+    const buttons = this.createActionElements(notification, linkButons)
+    if (buttons.length > 0) {
+      attachments[0].blocks.push(this.createActionBlock(buttons))
     }
 
     return {attachments}
-  }
-
-  private createActionBlock(elements: ActionsBlockElement[]): ActionsBlock {
-    if (elements.length > 0) {
-      return {
-        type: 'actions',
-        elements: elements,
-      }
-    } else {
-      return null
-    }
   }
 }

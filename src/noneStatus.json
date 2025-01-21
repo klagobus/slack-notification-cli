@@ -1,0 +1,21 @@
+{
+    "title": "Ottermated Test Notification",
+    "status": "none",
+    "details": {
+      "repoName": "ottermated",
+      "testSuiteName": "regression",
+      "triggeredBy": "U03HMRFJA73",
+      "gitBranch": "klb-test",
+      "testingFramework": "Jest",
+      "buildNumber": "12",
+      "links": {
+        "build": "https://example.com/build-12",
+        "buildArtifacts": "https://example.com/build-artifacts",
+        "pullRequest": "https://example.com/view-pr",
+        "reportPortal": "https://example.com/report-portal",
+        "htmlReport": "https://example.com/html-report"
+      }
+    }
+   
+  }
+  
