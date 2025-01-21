@@ -1,54 +1,59 @@
-slack-notification-client
-=================
+# slack-notification-client
 
 A new CLI generated with oclif
 
-
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/slack-notification-client.svg)](https://npmjs.org/package/slack-notification-client)
-[![Downloads/week](https://img.shields.io/npm/dw/slack-notification-client.svg)](https://npmjs.org/package/slack-notification-client)
-
+[![Version](https://img.shields.io/npm/v/slack-notification-cli.svg)](https://npmjs.org/package/slack-notification-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/slack-notification-cli.svg)](https://npmjs.org/package/slack-notification-cli)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g slack-notification-cli
-$ tests-notify COMMAND
+$ notify COMMAND
 running command...
-$ tests-notify (--version)
+$ notify (--version)
 slack-notification-cli/0.0.0 win32-x64 node-v20.15.1
-$ tests-notify --help [COMMAND]
+$ notify --help [COMMAND]
 USAGE
-  $ tests-notify COMMAND
+  $ notify COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`tests-notify help [COMMAND]`](#tests-notify-help-command)
-* [`tests-notify plugins`](#tests-notify-plugins)
-* [`tests-notify plugins add PLUGIN`](#tests-notify-plugins-add-plugin)
-* [`tests-notify plugins:inspect PLUGIN...`](#tests-notify-pluginsinspect-plugin)
-* [`tests-notify plugins install PLUGIN`](#tests-notify-plugins-install-plugin)
-* [`tests-notify plugins link PATH`](#tests-notify-plugins-link-path)
-* [`tests-notify plugins remove [PLUGIN]`](#tests-notify-plugins-remove-plugin)
-* [`tests-notify plugins reset`](#tests-notify-plugins-reset)
-* [`tests-notify plugins uninstall [PLUGIN]`](#tests-notify-plugins-uninstall-plugin)
-* [`tests-notify plugins unlink [PLUGIN]`](#tests-notify-plugins-unlink-plugin)
-* [`tests-notify plugins update`](#tests-notify-plugins-update)
-* [`tests-notify send`](#tests-notify-send)
 
-## `tests-notify help [COMMAND]`
+- [`notify help [COMMAND]`](#notify-help-command)
+- [`notify plugins`](#notify-plugins)
+- [`notify plugins add PLUGIN`](#notify-plugins-add-plugin)
+- [`notify plugins:inspect PLUGIN...`](#notify-pluginsinspect-plugin)
+- [`notify plugins install PLUGIN`](#notify-plugins-install-plugin)
+- [`notify plugins link PATH`](#notify-plugins-link-path)
+- [`notify plugins remove [PLUGIN]`](#notify-plugins-remove-plugin)
+- [`notify plugins reset`](#notify-plugins-reset)
+- [`notify plugins uninstall [PLUGIN]`](#notify-plugins-uninstall-plugin)
+- [`notify plugins unlink [PLUGIN]`](#notify-plugins-unlink-plugin)
+- [`notify plugins update`](#notify-plugins-update)
+- [`notify send`](#notify-send)
 
-Display help for tests-notify.
+## `notify help [COMMAND]`
+
+Display help for notify.
 
 ```
 USAGE
-  $ tests-notify help [COMMAND...] [-n]
+  $ notify help [COMMAND...] [-n]
 
 ARGUMENTS
   COMMAND...  Command to show help for.
@@ -57,18 +62,18 @@ FLAGS
   -n, --nested-commands  Include all nested commands in the output.
 
 DESCRIPTION
-  Display help for tests-notify.
+  Display help for notify.
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v6.2.21/src/commands/help.ts)_
 
-## `tests-notify plugins`
+## `notify plugins`
 
 List installed plugins.
 
 ```
 USAGE
-  $ tests-notify plugins [--json] [--core]
+  $ notify plugins [--json] [--core]
 
 FLAGS
   --core  Show core plugins.
@@ -80,18 +85,18 @@ DESCRIPTION
   List installed plugins.
 
 EXAMPLES
-  $ tests-notify plugins
+  $ notify plugins
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.25/src/commands/plugins/index.ts)_
 
-## `tests-notify plugins add PLUGIN`
+## `notify plugins add PLUGIN`
 
-Installs a plugin into tests-notify.
+Installs a plugin into notify.
 
 ```
 USAGE
-  $ tests-notify plugins add PLUGIN... [--json] [-f] [-h] [-s | -v]
+  $ notify plugins add PLUGIN... [--json] [-f] [-h] [-s | -v]
 
 ARGUMENTS
   PLUGIN...  Plugin to install.
@@ -106,7 +111,7 @@ GLOBAL FLAGS
   --json  Format output as json.
 
 DESCRIPTION
-  Installs a plugin into tests-notify.
+  Installs a plugin into notify.
 
   Uses npm to install plugins.
 
@@ -116,29 +121,29 @@ DESCRIPTION
   Use the TESTS_NOTIFY_NPM_REGISTRY environment variable to set the npm registry.
 
 ALIASES
-  $ tests-notify plugins add
+  $ notify plugins add
 
 EXAMPLES
   Install a plugin from npm registry.
 
-    $ tests-notify plugins add myplugin
+    $ notify plugins add myplugin
 
   Install a plugin from a github url.
 
-    $ tests-notify plugins add https://github.com/someuser/someplugin
+    $ notify plugins add https://github.com/someuser/someplugin
 
   Install a plugin from a github slug.
 
-    $ tests-notify plugins add someuser/someplugin
+    $ notify plugins add someuser/someplugin
 ```
 
-## `tests-notify plugins:inspect PLUGIN...`
+## `notify plugins:inspect PLUGIN...`
 
 Displays installation properties of a plugin.
 
 ```
 USAGE
-  $ tests-notify plugins inspect PLUGIN...
+  $ notify plugins inspect PLUGIN...
 
 ARGUMENTS
   PLUGIN...  [default: .] Plugin to inspect.
@@ -154,18 +159,18 @@ DESCRIPTION
   Displays installation properties of a plugin.
 
 EXAMPLES
-  $ tests-notify plugins inspect myplugin
+  $ notify plugins inspect myplugin
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.25/src/commands/plugins/inspect.ts)_
 
-## `tests-notify plugins install PLUGIN`
+## `notify plugins install PLUGIN`
 
-Installs a plugin into tests-notify.
+Installs a plugin into notify.
 
 ```
 USAGE
-  $ tests-notify plugins install PLUGIN... [--json] [-f] [-h] [-s | -v]
+  $ notify plugins install PLUGIN... [--json] [-f] [-h] [-s | -v]
 
 ARGUMENTS
   PLUGIN...  Plugin to install.
@@ -180,7 +185,7 @@ GLOBAL FLAGS
   --json  Format output as json.
 
 DESCRIPTION
-  Installs a plugin into tests-notify.
+  Installs a plugin into notify.
 
   Uses npm to install plugins.
 
@@ -190,31 +195,31 @@ DESCRIPTION
   Use the TESTS_NOTIFY_NPM_REGISTRY environment variable to set the npm registry.
 
 ALIASES
-  $ tests-notify plugins add
+  $ notify plugins add
 
 EXAMPLES
   Install a plugin from npm registry.
 
-    $ tests-notify plugins install myplugin
+    $ notify plugins install myplugin
 
   Install a plugin from a github url.
 
-    $ tests-notify plugins install https://github.com/someuser/someplugin
+    $ notify plugins install https://github.com/someuser/someplugin
 
   Install a plugin from a github slug.
 
-    $ tests-notify plugins install someuser/someplugin
+    $ notify plugins install someuser/someplugin
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.25/src/commands/plugins/install.ts)_
 
-## `tests-notify plugins link PATH`
+## `notify plugins link PATH`
 
 Links a plugin into the CLI for development.
 
 ```
 USAGE
-  $ tests-notify plugins link PATH [-h] [--install] [-v]
+  $ notify plugins link PATH [-h] [--install] [-v]
 
 ARGUMENTS
   PATH  [default: .] path to plugin
@@ -234,18 +239,18 @@ DESCRIPTION
 
 
 EXAMPLES
-  $ tests-notify plugins link myplugin
+  $ notify plugins link myplugin
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.25/src/commands/plugins/link.ts)_
 
-## `tests-notify plugins remove [PLUGIN]`
+## `notify plugins remove [PLUGIN]`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ tests-notify plugins remove [PLUGIN...] [-h] [-v]
+  $ notify plugins remove [PLUGIN...] [-h] [-v]
 
 ARGUMENTS
   PLUGIN...  plugin to uninstall
@@ -258,20 +263,20 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ tests-notify plugins unlink
-  $ tests-notify plugins remove
+  $ notify plugins unlink
+  $ notify plugins remove
 
 EXAMPLES
-  $ tests-notify plugins remove myplugin
+  $ notify plugins remove myplugin
 ```
 
-## `tests-notify plugins reset`
+## `notify plugins reset`
 
 Remove all user-installed and linked plugins.
 
 ```
 USAGE
-  $ tests-notify plugins reset [--hard] [--reinstall]
+  $ notify plugins reset [--hard] [--reinstall]
 
 FLAGS
   --hard       Delete node_modules and package manager related files in addition to uninstalling plugins.
@@ -280,13 +285,13 @@ FLAGS
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.25/src/commands/plugins/reset.ts)_
 
-## `tests-notify plugins uninstall [PLUGIN]`
+## `notify plugins uninstall [PLUGIN]`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ tests-notify plugins uninstall [PLUGIN...] [-h] [-v]
+  $ notify plugins uninstall [PLUGIN...] [-h] [-v]
 
 ARGUMENTS
   PLUGIN...  plugin to uninstall
@@ -299,22 +304,22 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ tests-notify plugins unlink
-  $ tests-notify plugins remove
+  $ notify plugins unlink
+  $ notify plugins remove
 
 EXAMPLES
-  $ tests-notify plugins uninstall myplugin
+  $ notify plugins uninstall myplugin
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.25/src/commands/plugins/uninstall.ts)_
 
-## `tests-notify plugins unlink [PLUGIN]`
+## `notify plugins unlink [PLUGIN]`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ tests-notify plugins unlink [PLUGIN...] [-h] [-v]
+  $ notify plugins unlink [PLUGIN...] [-h] [-v]
 
 ARGUMENTS
   PLUGIN...  plugin to uninstall
@@ -327,20 +332,20 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ tests-notify plugins unlink
-  $ tests-notify plugins remove
+  $ notify plugins unlink
+  $ notify plugins remove
 
 EXAMPLES
-  $ tests-notify plugins unlink myplugin
+  $ notify plugins unlink myplugin
 ```
 
-## `tests-notify plugins update`
+## `notify plugins update`
 
 Update installed plugins.
 
 ```
 USAGE
-  $ tests-notify plugins update [-h] [-v]
+  $ notify plugins update [-h] [-v]
 
 FLAGS
   -h, --help     Show CLI help.
@@ -352,13 +357,13 @@ DESCRIPTION
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.25/src/commands/plugins/update.ts)_
 
-## `tests-notify send`
+## `notify send`
 
 Send a Slack notification
 
 ```
 USAGE
-  $ tests-notify send -t <value> -c <value> -f <value>
+  $ notify send -t <value> -c <value> -f <value>
 
 FLAGS
   -c, --channel=<value>  (required) Slack channel ID
@@ -368,4 +373,5 @@ FLAGS
 DESCRIPTION
   Send a Slack notification
 ```
+
 <!-- commandsstop -->
