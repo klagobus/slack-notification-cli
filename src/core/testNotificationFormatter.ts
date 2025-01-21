@@ -1,17 +1,14 @@
-import {
-  ActionsBlock,
-  ActionsBlockElement,
-  Button,
-  HeaderBlock,
-  MessageAttachment,
-  SectionBlock,
-  SectionBlockAccessory,
-  TextObject,
-} from '@slack/types'
+import {MessageAttachment} from '@slack/types'
 import {Notification} from '../types/notification'
 import {NotificationFormatter} from './notificationFormater'
 
 export class TestNotificationFormatter extends NotificationFormatter {
+  /**
+   * Formats a test notification into a structure suitable for Slack messages.
+   *
+   * @param notification - The notification object containing details about the test results.
+   * @returns An object containing an array of MessageAttachment objects formatted for Slack.
+   */
   public formatNotification(notification: Notification): {attachments: MessageAttachment[]} {
     const attachments: MessageAttachment[] = [
       {
