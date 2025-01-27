@@ -1,19 +1,19 @@
 {
-    "title": "Ottermated Test Notification",
+    "title": "Automated Test Notification",
     "status": "failure",
     "details": {
-      "repoName": "ottermated",
+      "repoName": "Test-Repo",
       "testSuiteName": "smoke",
-      "triggeredBy": "U03HMRFJA73",
+      "triggeredBy": "scheduled-run",
       "gitBranch": "main",
       "testingFramework": "Jest",
       "buildNumber": "1242",
       "links": {
-        "build": "https://example.com/view-build",
-        "buildArtifacts": "https://example.com/build-artifacts",
-        "pullRequest": "https://example.com/view-pr",
-        "reportPortal": "https://example.com/report-portal",
-        "htmlReport": "https://example.com/html-report"
+        "Build": "https://example.com/view-build",
+        "Build Artifacts": "https://example.com/build-artifacts",
+        "Pull Request": "https://example.com/view-pr",
+        "Report Portal": "https://example.com/report-portal",
+        "HTML Report": "https://example.com/html-report"
       }
     }
    

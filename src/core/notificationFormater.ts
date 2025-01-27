@@ -7,8 +7,9 @@ import {
   SectionBlock,
   SectionBlockAccessory,
   TextObject,
-} from '@slack/types'
-import {Notification} from '../types/notification'
+} from '@slack/types';
+
+import { Notification } from '../types/notification';
 
 export class NotificationFormatter {
   /**
@@ -20,10 +21,70 @@ export class NotificationFormatter {
    * - `none`: Orange color (#ffa500) indicates no specific status.
    */
   protected colorMap = {
-    success: '#36a64f',
     failure: '#e01e5a',
-    unknown: '#FFFF00',
     none: '#ffa500',
+    success: '#36a64f',
+    unknown: '#FFFF00',
+  };
+
+  /**
+   * Creates an action block for Slack messages containing the provided action elements.
+   *
+   * @param elements - An array of ActionsBlockElement objects to be included in the action block.
+   * @returns An ActionsBlock object containing the type and elements if any elements are provided; otherwise, returns undefined.
+   */
+  createActionBlock(elements: ActionsBlockElement[]): ActionsBlock {
+    if (elements.length > 0) {
+      return {
+        elements,
+        type: 'actions',
+      };
+    }
+  }
+
+  /**
+   * Creates action button elements for Slack messages based on the provided notification and link names.
+   * This method checks if the notification contains links. If links are present, it creates button elements
+   * for each link defined in the linkNames mapping. If no links are found, it returns an empty array.
+   * @param notification - The notification object containing details, including links.
+   * @returns An array of ActionsBlockElement objects representing the buttons created from the links.
+   */
+  createActionButtonElements(
+    notification: Notification
+  ): ActionsBlockElement[] {
+    const elements: ActionsBlockElement[] = [];
+    const links = notification.details?.links;
+
+    if (!links) {
+      return elements; // Return empty array if links is not defined
+    }
+
+    for (const [key, value] of Object.entries(links)) {
+      if (links[key]) {
+        elements.push(this.createButtonElement(key, value));
+      }
+    }
+
+    return elements;
+  }
+
+  /**
+   * Creates a button element for Slack messages.
+   *
+   * @param text - The text to be displayed on the button.
+   * @param url - The URL that the button will link to when clicked.
+   * @returns A Button object containing the type, text, and URL for the button.
+   */
+  createButtonElement(text: string, url: string): Button {
+    return {
+      text: {
+        emoji: true,
+        text,
+        type: 'plain_text',
+      },
+      type: 'button',
+      url,
+    };
   }
 
   /**
@@ -32,14 +93,14 @@ export class NotificationFormatter {
    * @param text - The text to be displayed in the header.
    * @returns A HeaderBlock object containing the type and text for the header.
    */
-  protected createHeaderBlock(text: string): HeaderBlock {
+  createHeaderBlock(text: string): HeaderBlock {
     return {
-      type: 'header',
       text: {
-        type: 'plain_text',
         text,
+        type: 'plain_text',
       },
-    }
+      type: 'header',
+    };
   }
 
   /**
@@ -51,75 +112,17 @@ export class NotificationFormatter {
    * @param options.accessory - An optional accessory element to be included in the section block.
    * @returns A SectionBlock object containing the type and specified options for the section.
    */
-  protected createSectionBlock(options: {
-    text?: TextObject
-    fields?: TextObject[]
-    accessory?: SectionBlockAccessory
+  createSectionBlock(options: {
+    accessory?: SectionBlockAccessory;
+    fields?: TextObject[];
+    text?: TextObject;
   }): SectionBlock {
     return {
-      type: 'section',
-      text: options.text,
-      fields: options.fields,
       accessory: options.accessory,
-    }
-  }
-
-  /**
-   * Creates a button element for Slack messages.
-   *
-   * @param text - The text to be displayed on the button.
-   * @param url - The URL that the button will link to when clicked.
-   * @returns A Button object containing the type, text, and URL for the button.
-   */
-  protected createButtonElement(text: string, url: string): Button {
-    return {
-      type: 'button',
-      text: {
-        type: 'plain_text',
-        text,
-        emoji: true,
-      },
-      url,
-    }
-  }
-
-  /**
-   * Creates action elements for Slack messages based on the provided notification and link names.
-   *
-   * @param notification - The notification object containing details, including links.
-   * @param linkNames - A record mapping link keys to their display labels.
-   * @returns An array of ActionsBlockElement objects representing the buttons created from the links.
-   */
-  protected createActionElements(notification: Notification, linkNames: Record<string, string>): ActionsBlockElement[] {
-    const elements: ActionsBlockElement[] = []
-    const links = notification.details?.links
-
-    if (!links) {
-      return elements // Return empty array if links is not defined
-    }
-
-    for (const [key, label] of Object.entries(linkNames)) {
-      if (links[key]) {
-        elements.push(this.createButtonElement(label, links[key]))
-      }
-    }
-
-    return elements
-  }
-
-  /**
-   * Creates an action block for Slack messages containing the provided action elements.
-   *
-   * @param elements - An array of ActionsBlockElement objects to be included in the action block.
-   * @returns An ActionsBlock object containing the type and elements if any elements are provided; otherwise, returns undefined.
-   */
-  protected createActionBlock(elements: ActionsBlockElement[]): ActionsBlock {
-    if (elements.length > 0) {
-      return {
-        type: 'actions',
-        elements: elements,
-      }
-    }
+      fields: options.fields,
+      text: options.text,
+      type: 'section',
+    };
   }
 
   /**
@@ -128,7 +131,10 @@ export class NotificationFormatter {
    * @param notification - The notification object containing details to be formatted.
    * @returns An object containing an array of MessageAttachment objects.
    */
-  public formatNotification(notification: Notification): {attachments: MessageAttachment[]} {
-    return {attachments: []}
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  formatNotification(notification: Notification): {
+    attachments: MessageAttachment[];
+  } {
+    return { attachments: [] };
   }
 }

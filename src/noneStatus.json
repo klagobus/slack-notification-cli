@@ -1,19 +1,19 @@
 {
-    "title": "Ottermated Test Notification",
+    "title": "Automated Test Notification",
     "status": "none",
     "details": {
-      "repoName": "ottermated",
+      "repoName": "Test-Repo",
       "testSuiteName": "regression",
-      "triggeredBy": "U03HMRFJA73",
+      "triggeredBy": "scheduled-run",
       "gitBranch": "klb-test",
       "testingFramework": "Jest",
       "buildNumber": "12",
       "links": {
-        "build": "https://example.com/build-12",
-        "buildArtifacts": "https://example.com/build-artifacts",
-        "pullRequest": "https://example.com/view-pr",
-        "reportPortal": "https://example.com/report-portal",
-        "htmlReport": "https://example.com/html-report"
+        "Build": "https://example.com/build-12",
+        "Build Artifacts": "https://example.com/build-artifacts",
+        "Pull Request": "https://example.com/view-pr",
+        "Report Portal": "https://example.com/report-portal",
+        "HTML Report": "https://example.com/html-report"
       }
     }
    

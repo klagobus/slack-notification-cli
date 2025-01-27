@@ -1,6 +1,7 @@
-import {MessageAttachment} from '@slack/types'
-import {Notification} from '../types/notification'
-import {NotificationFormatter} from './notificationFormater'
+import { MessageAttachment } from '@slack/types';
+
+import { Notification } from '../types/notification';
+import { NotificationFormatter } from './notificationFormater';
 
 export class TestNotificationFormatter extends NotificationFormatter {
   /**
@@ -9,52 +10,64 @@ export class TestNotificationFormatter extends NotificationFormatter {
    * @param notification - The notification object containing details about the test results.
    * @returns An object containing an array of MessageAttachment objects formatted for Slack.
    */
-  public formatNotification(notification: Notification): {attachments: MessageAttachment[]} {
+  public formatNotification(notification: Notification): {
+    attachments: MessageAttachment[];
+  } {
     const attachments: MessageAttachment[] = [
       {
-        color: `${this.colorMap[notification.status]}`,
         blocks: [
           this.createHeaderBlock(
             `:test_tube: ${
               notification.details.testingFramework.charAt(0).toUpperCase() +
               notification.details.testingFramework.slice(1)
-            } Tests :test_tube:`,
+            } Tests :test_tube:`
           ),
           this.createSectionBlock({
             fields: [
-              {type: 'mrkdwn', text: `*Repo:*\n \`${notification.details.repoName}\``},
-              {type: 'mrkdwn', text: `*Branch:*\n \`${notification.details.gitBranch}\``},
+              {
+                text: `*Repo:*\n \`${notification.details.repoName}\``,
+                type: 'mrkdwn',
+              },
+              {
+                text: `*Branch:*\n \`${notification.details.gitBranch}\``,
+                type: 'mrkdwn',
+              },
             ],
           }),
           this.createSectionBlock({
             fields: [
-              {type: 'mrkdwn', text: `*Test Suite:*\n \`${notification.details.testSuiteName}\``},
-              {type: 'mrkdwn', text: `*Framework:*\n \`${notification.details.testingFramework}\``},
+              {
+                text: `*Test Suite:*\n \`${notification.details.testSuiteName}\``,
+                type: 'mrkdwn',
+              },
+              {
+                text: `*Framework:*\n \`${notification.details.testingFramework}\``,
+                type: 'mrkdwn',
+              },
             ],
           }),
           this.createSectionBlock({
             fields: [
-              {type: 'mrkdwn', text: `*Tests Status:*\n \`${notification.status}\``},
-              {type: 'mrkdwn', text: `*Triggered by:*\n <@${notification.details.triggeredBy}>`},
+              {
+                text: `*Tests Status:*\n \`${notification.status}\``,
+                type: 'mrkdwn',
+              },
+              {
+                text: `*Triggered by:*\n \`${notification.details.triggeredBy}\``,
+                type: 'mrkdwn',
+              },
             ],
           }),
         ],
+        color: `${this.colorMap[notification.status]}`,
       },
-    ]
+    ];
 
-    const linkButons = {
-      pullRequest: 'View PR',
-      build: `View Build Number ${notification.details.buildNumber}`,
-      buildArtifacts: 'Build Artifacts',
-      reportPortal: 'Report Portal Launch',
-      htmlReport: 'View HTML Report',
-    }
-
-    const buttons = this.createActionElements(notification, linkButons)
+    const buttons = this.createActionButtonElements(notification);
     if (buttons.length > 0) {
-      attachments[0].blocks.push(this.createActionBlock(buttons))
+      attachments[0].blocks.push(this.createActionBlock(buttons));
     }
 
-    return {attachments}
+    return { attachments };
   }
 }
