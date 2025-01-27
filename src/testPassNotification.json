@@ -1,18 +1,18 @@
 {
-    "title": "Ottermated Test Notification",
+    "title": "Automated Test Notification",
     "status": "success",
     "details": {
-      "repoName": "ottermated",
+      "repoName": "Test-Repo",
       "testSuiteName": "smoke",
-      "triggeredBy": "U03HMRFJA73",
+      "triggeredBy": "scheduled-run",
       "gitBranch": "main",
       "testingFramework": "cucumber",
       "buildNumber": "1242",
       "links": {
-        "buildArtifacts": "https://example.com/build-artifacts",
-        "pullRequest": "https://example.com/view-pr",
-        "reportPortal": "https://example.com/report-portal",
-        "htmlReport": "https://example.com/html-report"
+        "Build Artifacts": "https://example.com/build-artifacts",
+        "Pull Request": "https://example.com/view-pr",
+        "Report Portal": "https://example.com/report-portal",
+        "HTML Report": "https://example.com/html-report"
       }
     }
    

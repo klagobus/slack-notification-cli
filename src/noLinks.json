@@ -1,10 +1,10 @@
 {
-    "title": "Ottermated Test Notification",
+    "title": "Automated Test Notification",
     "status": "unknown",
     "details": {
-      "repoName": "ottermated",
+      "repoName": "Test-Repo",
       "testSuiteName": "smoke",
-      "triggeredBy": "U03HMRFJA73",
+      "triggeredBy": "scheduled-run",
       "gitBranch": "main",
       "testingFramework": "cucumber",
       "buildNumber": "1242"

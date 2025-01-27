@@ -1,12 +1,13 @@
-import {MessageAttachment, WebClient} from '@slack/web-api'
-import {Notification} from '../types/notification'
-import {TestNotificationFormatter} from './testNotificationFormatter'
+import { MessageAttachment, WebClient } from '@slack/web-api';
+
+import { Notification } from '../types/notification';
+import { TestNotificationFormatter } from './testNotificationFormatter';
 
 export class SlackSender {
-  private client: WebClient
+  private client: WebClient;
 
   constructor(private token: string) {
-    this.client = new WebClient(token)
+    this.client = new WebClient(token);
   }
 
   /**
@@ -17,12 +18,12 @@ export class SlackSender {
    * @returns A promise that resolves when the message has been sent.
    */
   async send(channel: string, notification: Notification): Promise<void> {
-    const message = await this.testNotification(notification)
+    const message = await this.testNotification(notification);
     await this.client.chat.postMessage({
       channel,
       text: `Test Automation Results: \`${notification.status.toUpperCase()}\``,
       ...message,
-    })
+    });
   }
 
   /**
@@ -32,9 +33,9 @@ export class SlackSender {
    * @returns A promise that resolves to an object containing an array of MessageAttachment objects.
    */
   async testNotification(notification: Notification): Promise<{
-    attachments: MessageAttachment[]
+    attachments: MessageAttachment[];
   }> {
-    const notificationFormatter = new TestNotificationFormatter()
-    return notificationFormatter.formatNotification(notification)
+    const notificationFormatter = new TestNotificationFormatter();
+    return notificationFormatter.formatNotification(notification);
   }
 }
